@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Book } from './book.model';
 import { BookService } from './book.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book',
@@ -20,7 +21,7 @@ export class BookComponent implements OnInit {
       (book: Book) => {
         this.selectedBook = book;
       }
-    )
+    );
   }
 
 }

@@ -3,8 +3,9 @@ export class Book{
   public name: string;
   public author: string;
   public coverImgPath: string;
+  public openLibraryId: string;
 
-  constructor(){}
+  constructor() {}
 
   // constructor(isbn: number, name: string, author: string, coverImgPath: string) {
   //   this.isbn = isbn;

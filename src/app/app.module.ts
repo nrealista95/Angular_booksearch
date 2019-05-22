@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -24,6 +24,7 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     CoreModule,
     SharedModule,
     HttpClientModule

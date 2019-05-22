@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book.model';
 import { BookService } from '../book.service';
 import { HttpResponse } from '@angular/common/http';
+import { DataService } from 'src/app/shared/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -11,11 +13,25 @@ import { HttpResponse } from '@angular/common/http';
 export class BookListComponent implements OnInit {
 
   books: Book[];
+  query: string;
 
-  constructor(private bookService: BookService) { }
+  constructor(
+    private bookService: BookService,
+    private route: ActivatedRoute,
+    private dataService: DataService) {
+      route.params.subscribe(val => {
+        this.dataService.currentQuery.subscribe(query => this.query = query);
+        this.bookService.getBooks(this.query).subscribe(
+          data => this.toBook(data),
+          (error) => console.log(error)
+        );
+      });
+     }
 
   ngOnInit() {
-    this.bookService.getBooks().subscribe(
+    this.dataService.currentQuery.subscribe(query => this.query = query);
+
+    this.bookService.getBooks(this.query).subscribe(
       data => this.toBook(data),
       (error) => console.log(error)
     );
@@ -31,7 +47,13 @@ export class BookListComponent implements OnInit {
         book.author = element.author_name[0];
         book.name = element.title;
         book.isbn = element.isbn[0];
-        book.coverImgPath = '';
+        if (element.hasOwnProperty('cover_edition_key'))  {
+          book.openLibraryId = element.cover_edition_key;
+        } else if (element.hasOwnProperty('edition_key')) {
+          const ids = element.edition_key;
+          book.openLibraryId = ids[0];
+        }
+        book.coverImgPath = 'http://covers.openlibrary.org/b/olid/' + book.openLibraryId + '-L.jpg?default=false';
         console.log(book);
         this.books.push(book);
       }
