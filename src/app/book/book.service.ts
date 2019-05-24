@@ -19,7 +19,6 @@ export class BookService {
    * GET request books with a given search parameter
    * @param query user input parameter
    */
-
   getBooks(query: string) {
     console.log(this.route.snapshot.queryParams);
     query = this.route.snapshot.queryParams.filter;
