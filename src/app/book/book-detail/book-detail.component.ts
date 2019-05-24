@@ -13,6 +13,7 @@ export class BookDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('Book Received ---> ' + this.book);
   }
 
 }

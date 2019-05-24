@@ -1,18 +1,13 @@
-<div class='row'>
-  <div class='col-8'>
-    <input
-    [(ngModel)]="searchQuery"
-    class="form-control mr-sm-2"
-    type="search"
-    placeholder="Search"
-    aria-label="Search">
-  </div>
-  <div class="col">
-    <div class="dropdown" appDropdown #r="appDropdown">
-      <button
-      class="btn btn-outline-success my-2 my-sm-0"
-      type="submit"
-      (click)="onSearch()">Search</button>
-    </div>
-  </div>
-</div>
+<h2 style="text-align: center; padding-bottom: 20px">"Um livro deve ser um foco de luz na mão de alguém"</h2>
+<div class="row justify-content-center">
+  <div class="col-lg-4 col-lg-offset-4">
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="title, isbn, author" [(ngModel)]="searchQuery"/>
+          <div class="input-group-append">
+              <button class="btn btn-outline-light"
+              type="button"
+              (click)="onSearch()">Search</button>
+          </div>
+      </div><!-- /input-group -->
+  </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->

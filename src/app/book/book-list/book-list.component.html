@@ -1,7 +1,7 @@
 <div class='row'>
-  <div class='col-xs-12'>
-    <app-book-item
-    *ngFor='let bookEl of books'
-    [book]='bookEl'></app-book-item>
+  <div class='col-md-12' id="column">
+    <div class="card-group d-flex justify-content-center">
+      <app-book-item *ngFor='let bookEl of books' [book]='bookEl'></app-book-item>
+    </div>
   </div>
 </div>

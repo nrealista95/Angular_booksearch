@@ -1,20 +1,18 @@
-<a
-href=#
-class='list-group-item clearfix'>
-  <div class='pull-left'>
-    <div class="card" style="width: 18rem;">
-      <img
-      [src]="book.coverImgPath"
-      class="card-img-top"
-      alt="{{book.name}}"
-      style=''>
-      <div class="card-body">
-        <h5 class="card-title">{{book.name}}</h5>
-        <p class="card-text">{{book.author}}</p>
-        <a href="#"
-        class="btn btn-primary"
-        (click)="onSelect()">Go somewhere</a>
-      </div>
+<div class="Grid-item">
+    <div class="card h-100" style="width: 18rem;">
+        <img
+        [src]="book.coverImgPath"
+        class="card-img-top"
+        alt="..."
+        onerror="this.src='assets/images/no-image-found-360x260.png'">
+        <div class="card-body">
+          <h5 class="card-title">{{book.name}}</h5>
+          <p class="card-text">{{book.author}}</p>
+          <a [routerLink]="['/book/detail', book.openLibraryId]"
+          routerLinkActive="router-link-active"
+          class="btn btn-primary"
+          (click)="onSelect()">Details</a>
+        </div>
     </div>
-  </div>
-</a>
+</div>
+
